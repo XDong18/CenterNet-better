@@ -32,6 +32,8 @@ from dl_lib.evaluation import (COCOEvaluator, DatasetEvaluators,
                                PascalVOCDetectionEvaluator, verify_results)
 from net import build_model
 
+from detectron2.data.datasets import register_coco_instances
+
 
 class Trainer(DefaultTrainer):
     """
@@ -51,30 +53,15 @@ class Trainer(DefaultTrainer):
         """
         if output_folder is None:
             output_folder = os.path.join(cfg.OUTPUT_DIR, "inference")
-        evaluator_list = []
-        evaluator_type = MetadataCatalog.get(dataset_name).evaluator_type
-
-        if evaluator_type in ["coco", "coco_panoptic_seg"]:
-            evaluator_list.append(
-                COCOEvaluator(
-                    dataset_name, cfg, True,
-                    output_folder, dump=cfg.GLOBAL.DUMP_TRAIN
-                ))
-        elif evaluator_type == "pascal_voc":
-            return PascalVOCDetectionEvaluator(dataset_name)
-
-        if len(evaluator_list) == 0:
-            raise NotImplementedError(
-                "no Evaluator for the dataset {} with the type {}".format(
-                    dataset_name, evaluator_type
-                )
-            )
-        elif len(evaluator_list) == 1:
-            return evaluator_list[0]
-        return DatasetEvaluators(evaluator_list)
+        return COCOEvaluator(dataset_name, cfg, True, output_folder)
 
 
 def main(args):
+    # register dataset
+    register_coco_instances("bdd100k_train", {}, "/shared/xudongliu/bdd100k/labels/bdd100k_labels_images_det_coco_train.json", "/shared/xudongliu/bdd100k/100k/train")
+    register_coco_instances("bdd100k_val", {}, "/shared/xudongliu/bdd100k/labels/bdd100k_labels_images_det_coco_val.json", "/shared/xudongliu/bdd100k/100k/val")
+    # register dataset end
+
     config.merge_from_list(args.opts)
     cfg, logger = default_setup(config, args)
     model = build_model(cfg)
