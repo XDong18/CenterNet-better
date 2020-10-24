@@ -14,7 +14,7 @@ _config_dict = dict(
         CENTERNET=dict(
             DECONV_CHANNEL=[2048, 256, 128, 64],
             DECONV_KERNEL=[4, 4, 4],
-            NUM_CLASSES=10,
+            NUM_CLASSES=10, # TODO class nunber
             MODULATE_DEFORM=True,
             BIAS_VALUE=-2.19,
             DOWN_SCALE=4,
@@ -47,7 +47,7 @@ _config_dict = dict(
         OUTPUT_SIZE=(128, 128),
     ),
     DATALOADER=dict(
-        NUM_WORKERS=4,
+        NUM_WORKERS=8
     ),
     DATASETS=dict(
         TRAIN=("bdd100k_train",),
