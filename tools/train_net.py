@@ -32,7 +32,7 @@ from dl_lib.evaluation import (COCOEvaluator, DatasetEvaluators,
                                PascalVOCDetectionEvaluator, verify_results)
 from net import build_model
 
-from detectron2.data.datasets import register_coco_instances
+from dl_lib.data.datasets import register_coco_instances
 
 
 class Trainer(DefaultTrainer):
