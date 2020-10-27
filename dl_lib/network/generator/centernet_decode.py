@@ -107,7 +107,7 @@ class CenterNetDecoder(object):
         topk_scores, topk_inds = torch.topk(scores.reshape(batch, channel, -1), K)
 
         topk_inds = topk_inds % (height * width)
-        topk_ys = (topk_inds / width).int().float()
+        topk_ys = torch.floor_divide(topk_inds, width).int().float()
         topk_xs = (topk_inds % width).int().float()
 
         # get all topk in in a batch
