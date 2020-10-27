@@ -15,7 +15,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 from PIL import Image
 
 from dl_lib.data import MetadataCatalog
-from dl_lib.structures import BitMasks, Boxes, BoxMode, Keypoints, PolygonMasks, RotatedBoxes
+from dl_lib.structures import BitMasks, Boxes, BoxMode, Keypoints, PolygonMasks # delete RotatedBoxes
 
 from .colormap import random_color
 
@@ -1153,7 +1153,7 @@ class Visualizer:
         """
         Convert different format of boxes to an NxB array, where B = 4 or 5 is the box dimension.
         """
-        if isinstance(boxes, Boxes) or isinstance(boxes, RotatedBoxes):
+        if isinstance(boxes, Boxes) or isinstance(boxes): #TODO deldete RotatedBoxes
             return boxes.tensor.numpy()
         else:
             return np.asarray(boxes)
