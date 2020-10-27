@@ -113,7 +113,7 @@ class CenterNetDecoder(object):
         # get all topk in in a batch
         topk_score, index = torch.topk(topk_scores.reshape(batch, -1), K)
         # div by K because index is grouped by K(C x K shape)
-        topk_clses = (index / K).int()
+        topk_clses = torch.floor_divide(index , K).int()
         topk_inds = gather_feature(topk_inds.view(batch, -1, 1), index).reshape(batch, K)
         topk_ys = gather_feature(topk_ys.reshape(batch, -1, 1), index).reshape(batch, K)
         topk_xs = gather_feature(topk_xs.reshape(batch, -1, 1), index).reshape(batch, K)
