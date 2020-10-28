@@ -17,7 +17,7 @@ from PIL import Image
 from dl_lib.data import MetadataCatalog
 from dl_lib.structures import BitMasks, Boxes, BoxMode, Keypoints, PolygonMasks # delete RotatedBoxes
 
-from .colormap import random_color
+from dl_lib.utils.colormap import random_color
 
 logger = logging.getLogger(__name__)
 

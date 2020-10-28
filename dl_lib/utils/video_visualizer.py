@@ -9,7 +9,7 @@ from dl_lib.utils.visualizer import (
     _PanopticPrediction,
 )
 
-from .colormap import random_color
+from dl_lib.utils.colormap import random_color
 
 
 class _DetectedInstance:
