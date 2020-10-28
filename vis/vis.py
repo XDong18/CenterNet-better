@@ -5,6 +5,8 @@ import os
 import time
 import cv2
 import tqdm
+import sys
+sys.path.insert(0, '.')  # noqa: E402
 
 # from dl_lib.config import get_cfg
 from dl_lib.data.detection_utils import read_image
