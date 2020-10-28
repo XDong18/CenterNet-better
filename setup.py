@@ -68,6 +68,9 @@ with open("tools/dl_train", "w") as dl_lib_train:
 with open("tools/dl_test", "w") as dl_lib_test:
     dl_lib_test.write(
         head + f"python3 {os.path.join(cur_dir, 'tools', 'test_net.py')} $@")
+with open("vis/vis", "w") as dl_lib_vis:
+    dl_lib_vis.write(
+        head + f"python3 {os.path.join(cur_dir, 'vis', 'vis.py')} $@")
 
 setup(
     name="dl_lib",
