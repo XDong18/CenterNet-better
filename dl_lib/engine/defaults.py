@@ -36,11 +36,13 @@ from dl_lib.utils.logger import setup_logger
 from . import hooks
 from .train_loop import SimpleTrainer
 
+from net import build_model
+
 __all__ = ["default_argument_parser", "default_setup", "DefaultPredictor", "DefaultTrainer"]
 
 
-def build_model(cfg):
-    pass
+# def build_model(cfg):
+#     pass
 
 
 def default_argument_parser():
