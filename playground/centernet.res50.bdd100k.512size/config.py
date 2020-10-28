@@ -45,6 +45,8 @@ _config_dict = dict(
         ),
         FORMAT="RGB",
         OUTPUT_SIZE=(128, 128),
+        MIN_SIZE_TEST = 720,
+        MAX_SIZE_TEST = 1280
     ),
     DATALOADER=dict(
         NUM_WORKERS=8
