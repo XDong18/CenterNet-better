@@ -67,9 +67,9 @@ def get_parser():
         help="Minimum score for instance predictions to be shown",
     )
     parser.add_argument(
-        "--opts",
-        help="Modify config options using the command-line 'KEY VALUE' pairs",
-        default=[],
+        "opts",
+        help="Modify config options using the command-line",
+        default=None,
         nargs=argparse.REMAINDER,
     )
     return parser
@@ -81,6 +81,7 @@ if __name__ == "__main__":
 
     mp.set_start_method("spawn", force=True)
     args = get_parser().parse_args()
+    config.merge_from_list(args.opts)
     cfg, logger = default_setup(config, args)
     # setup_logger(name="fvcore")
     # logger = setup_logger()
