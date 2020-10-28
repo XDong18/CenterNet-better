@@ -12,6 +12,7 @@ from dl_lib.utils.video_visualizer import VideoVisualizer
 from dl_lib.utils.visualizer import ColorMode, Visualizer
 
 
+
 class VisualizationDemo(object):
     def __init__(self, cfg, instance_mode=ColorMode.IMAGE, parallel=False):
         """
